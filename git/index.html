@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Git Spells & Comic UI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Short+Stack&display=swap');
+
+        :root {
+            --bg: #fdf6e3;
+            --panel-bg: #ffffff;
+            --ink: #000000;
+            --magic: #bd93f9;
+            --danger: #ff5555;
+            --success: #50fa7b;
+        }
+
+        body { 
+            background-color: var(--bg); 
+            font-family: 'Short Stack', cursive; 
+            padding: 40px;
+            color: var(--ink);
+        }
+
+        h1 { 
+            text-align: center; 
+            font-family: 'Permanent Marker', cursive; 
+            font-size: 3.5rem;
+            margin-bottom: 50px;
+            transform: rotate(-1deg);
+        }
+
+        .comic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .panel {
+            background: var(--panel-bg);
+            border: 4px solid var(--ink);
+            padding: 25px;
+            position: relative;
+            box-shadow: 10px 10px 0px var(--ink);
+            /* Hand-drawn border effect */
+            border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel:nth-child(even) { transform: rotate(1deg); }
+        .panel:nth-child(odd) { transform: rotate(-1deg); }
+
+        h2 { 
+            font-family: 'Permanent Marker', cursive; 
+            margin: 0 0 10px 0;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--ink);
+        }
+
+        .desc { margin-bottom: 15px; font-size: 1.1rem; }
+
+        /* The Command Box */
+        .cmd-container {
+            background: #282a36;
+            color: #f8f8f2;
+            padding: 12px;
+            border: 2px solid var(--ink);
+            border-radius: 5px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cmd-container:hover {
+            background: #44475a;
+            transform: scale(1.02);
+        }
+
+        .cmd-container:active {
+            transform: scale(0.98);
+        }
+
+        code { font-family: 'Courier New', monospace; font-weight: bold; font-size: 0.95rem; }
+
+        .copy-btn {
+            background: var(--magic);
+            border: 2px solid var(--ink);
+            font-family: 'Permanent Marker', cursive;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            cursor: pointer;
+            box-shadow: 3px 3px 0px var(--ink);
+        }
+
+        .copy-btn:active {
+            box-shadow: 0px 0px 0px var(--ink);
+            transform: translate(2px, 2px);
+        }
+
+        .footer-note {
+            margin-top: auto;
+            font-size: 0.8rem;
+            font-style: italic;
+            color: #777;
+            padding-top: 15px;
+        }
+
+        /* Success Flash */
+        .copied {
+            background: var(--success) !important;
+            color: var(--ink) !important;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>📓 THE GIT DEVELOPER SPELLBOOK</h1>
+
+    <div class="comic-grid">
+
+        <div class="panel">
+            <h2>The Panic Pocket</h2>
+            <p class="desc">Save your messy code in a hidden drawer to switch branches fast.</p>
+            <div class="cmd-container" onclick="copyCmd(this)">
+                <code>git stash push -m "Save"</code>
+                <button class="copy-btn">COPY</button>
+            </div>
+            <p class="footer-note">Use "git stash pop" to get it back.</p>
+        </div>
+
+        <div class="panel">
+            <h2>The Time Eraser</h2>
+            <p class="desc">Fix your last commit (typos, forgotten files) without a new message.</p>
+            <div class="cmd-container" onclick="copyCmd(this)">
+                <code>git commit --amend --no-edit</code>
+                <button class="copy-btn">COPY</button>
+            </div>
+            <p class="footer-note">Perfect for "Final... final_v2" cleanup.</p>
+        </div>
+
+        <div class="panel" style="border-color: var(--danger);">
+            <h2>The Undo Button</h2>
+            <p class="desc">Undo the last commit but KEEP all your code changes.</p>
+            <div class="cmd-container" onclick="copyCmd(this)">
+                <code>git reset --soft HEAD~1</code>
+                <button class="copy-btn">COPY</button>
+            </div>
+            <p class="footer-note">Safety first! --hard will delete your code.</p>
+        </div>
+
+        <div class="panel">
+            <h2>The Map Viewer</h2>
+            <p class="desc">See the beautiful, branching subway map of your history.</p>
+            <div class="cmd-container" onclick="copyCmd(this)">
+                <code>git log --oneline --graph --all</code>
+                <button class="copy-btn">COPY</button>
+            </div>
+            <p class="footer-note">The best way to see where you are.</p>
+        </div>
+
+        <div class="panel">
+            <h2>The Picky Thief</h2>
+            <p class="desc">Grab one specific commit from another branch and bring it here.</p>
+            <div class="cmd-container" onclick="copyCmd(this)">
+                <code>git cherry-pick [HASH]</code>
+                <button class="copy-btn">COPY</button>
+            </div>
+            <p class="footer-note">No need to merge the whole branch!</p>
+        </div>
+
+        <div class="panel" style="box-shadow: 10px 10px 0px var(--magic);">
+            <h2>The Bug Detective</h2>
+            <p class="desc">Let Git find which commit broke the app (Binary Search).</p>
+            <div class="cmd-container" onclick="copyCmd(this)">
+                <code>git bisect start</code>
+                <button class="copy-btn">COPY</button>
+            </div>
+            <p class="footer-note">Mark commits 'good' or 'bad' to find the culprit.</p>
+        </div>
+
+        <div class="panel">
+            <h2>The Ghost Tracker</h2>
+            <p class="desc">Find "lost" commits that you accidentally deleted.</p>
+            <div class="cmd-container" onclick="copyCmd(this)">
+                <code>git reflog</code>
+                <button class="copy-btn">COPY</button>
+            </div>
+            <p class="footer-note">Git never actually deletes anything for 30 days.</p>
+        </div>
+
+        <div class="panel">
+            <h2>The Super Alias</h2>
+            <p class="desc">Create a shortcut. Just type "git tree" from now on.</p>
+            <div class="cmd-container" onclick="copyCmd(this)">
+                <code>git config --global alias.tree "log --oneline --graph --all"</code>
+                <button class="copy-btn">COPY</button>
+            </div>
+            <p class="footer-note">Set it once, use it forever.</p>
+        </div>
+
+    </div>
+
+    <script>
+        function copyCmd(element) {
+            const code = element.querySelector('code').innerText;
+            const btn = element.querySelector('.copy-btn');
+            
+            navigator.clipboard.writeText(code).then(() => {
+                element.classList.add('copied');
+                btn.innerText = "COPIED!";
+                
+                setTimeout(() => {
+                    element.classList.remove('copied');
+                    btn.innerText = "COPY";
+                }, 1000);
+            });
+        }
+    </script>
+</body>
+</html>
