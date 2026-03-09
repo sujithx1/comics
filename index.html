@@ -1,7 +1,263 @@
-<h1>Developer Comics</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Tech Comic Vault</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Short+Stack&display=swap');
 
-<ul>
-<li><a href="/comics/git/">Git Comics</a></li>
-<li><a href="/comics/docker/">Docker Comics</a></li>
-<li><a href="/comics/linux/">Linux Comics</a></li>
-</ul>
+        :root {
+            --bg: #fdf6e3;
+            --ink: #000000;
+            --git-red: #f1502f;
+            --docker-blue: #2496ed;
+            --linux-gray: #333333;
+            --py-yellow: #ffde57;
+        }
+
+        body {
+            background-color: var(--bg);
+            background-image: radial-gradient(var(--ink) 0.5px, transparent 0.5px); /* Comic Dot Texture */
+            background-size: 10px 10px;
+            font-family: 'Short Stack', cursive;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .main-title {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 5rem;
+            text-transform: uppercase;
+            line-height: 0.8;
+            margin: 0;
+            transform: skew(-5deg) rotate(-2deg);
+            -webkit-text-stroke: 2px var(--ink);
+            text-shadow: 8px 8px 0px #ff79c6;
+        }
+
+        .subtitle {
+            background: var(--ink);
+            color: white;
+            display: inline-block;
+            padding: 5px 20px;
+            font-size: 1.5rem;
+            margin-top: 10px;
+            transform: rotate(1deg);
+        }
+
+        /* The Comic Layout */
+        .vault-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .issue-card {
+            background: white;
+            border: 5px solid var(--ink);
+            height: 400px;
+            position: relative;
+            text-decoration: none;
+            color: var(--ink);
+            overflow: hidden;
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 10px 10px 0px var(--ink);
+        }
+
+        .issue-card:hover {
+            transform: scale(1.05) translateY(-10px);
+            box-shadow: 20px 20px 0px var(--ink);
+            z-index: 10;
+        }
+
+        /* Card Visuals */
+        .issue-card .cover-art {
+            height: 60%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            border-bottom: 5px solid var(--ink);
+        }
+
+        .issue-card .info {
+            padding: 15px;
+            background: white;
+            height: 40%;
+        }
+
+        .issue-number {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--ink);
+            color: white;
+            padding: 5px 10px;
+            font-family: 'Permanent Marker';
+            font-size: 1.2rem;
+        }
+
+        .issue-title {
+            font-family: 'Permanent Marker';
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        /* Custom Card Styles */
+        .card-git { border-top: 15px solid var(--git-red); }
+        .card-docker { border-top: 15px solid var(--docker-blue); }
+        .card-linux { border-top: 15px solid var(--linux-gray); }
+        .card-python { border-top: 15px solid var(--py-yellow); }
+
+        /* The "Boom" Sticker */
+        .boom {
+            position: absolute;
+            bottom: -10px;
+            right: -10px;
+            background: yellow;
+            padding: 10px;
+            border: 3px solid black;
+            font-family: 'Permanent Marker';
+            transform: rotate(-15deg);
+            font-size: 1.2rem;
+        }
+
+        .comic-footer {
+        text-align: center;
+        margin-top: 100px;
+        padding: 40px 20px;
+        border-top: 5px dashed #000;
+        font-family: 'Permanent Marker', cursive;
+    }
+
+    .credit-line {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .social-box {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .social-link {
+        background: #fff;
+        border: 3px solid #000;
+        padding: 10px 20px;
+        text-decoration: none;
+        color: #000;
+        box-shadow: 5px 5px 0px #000;
+        transition: 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .social-link:hover {
+        transform: translate(-3px, -3px);
+        box-shadow: 8px 8px 0px #ff79c6;
+    }
+
+    /* Branding Colors for Hover */
+    .github:hover { background: #333; color: #fff; }
+    .linkedin:hover { background: #0077b5; color: #fff; }
+    .portfolio:hover { background: #50fa7b; color: #000; }
+
+    .final-tag {
+        margin-top: 30px;
+        font-size: 1rem;
+        opacity: 0.7;
+        font-family: 'Short Stack', cursive;
+    }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 class="main-title">THE TECH<br>CHRONICLES</h1>
+        <div class="subtitle">Issue #01: The Junior's Survival Guide</div>
+    </header>
+
+    <div class="vault-grid">
+        
+        <a href="/comics/git/" class="issue-card card-git">
+            <div class="issue-number">VOL 1</div>
+            <div class="cover-art" style="background: #ffe3e0;">📦</div>
+            <div class="info">
+                <p style="margin:0; color: var(--git-red); font-weight: bold;">VERSION CONTROL</p>
+                <h3 class="issue-title">GIT WIZARD</h3>
+                <p>Master the time-travel spells.</p>
+            </div>
+            <div class="boom">PUSH!</div>
+        </a>
+
+        <a href="/comics/docker" class="issue-card card-docker">
+            <div class="issue-number">VOL 2</div>
+            <div class="cover-art" style="background: #e0f2ff;">🐳</div>
+            <div class="info">
+                <p style="margin:0; color: var(--docker-blue); font-weight: bold;">CONTAINERIZATION</p>
+                <h3 class="issue-title">DOCKER SHIP</h3>
+                <p>Don't let your app sink!</p>
+            </div>
+            <div class="boom" style="background: #50fa7b;">BUILD!</div>
+        </a>
+
+        <a href="/comics/linux" class="issue-card card-linux">
+            <div class="issue-number">VOL 3</div>
+            <div class="cover-art" style="background: #eee;">🐧</div>
+            <div class="info">
+                <p style="margin:0; color: #555; font-weight: bold;">OS FUNDAMENTALS</p>
+                <h3 class="issue-title">TERMINAL OPS</h3>
+                <p>Real devs use the shell.</p>
+            </div>
+            <div class="boom" style="background: #bd93f9;">ROOT!</div>
+        </a>
+
+        <a href="/comics/python/" class="issue-card card-python">
+            <div class="issue-number">VOL 4</div>
+            <div class="cover-art" style="background: #fff9e0;">🐍</div>
+            <div class="info">
+                <p style="margin:0; color: #b78f00; font-weight: bold;">SCRIPTING</p>
+                <h3 class="issue-title">SNAKE CHARM</h3>
+                <p>Automate your boring life.</p>
+            </div>
+            <div class="boom" style="background: #ff79c6;">RUN!</div>
+        </a>
+
+    </div>
+
+  <footer class="comic-footer">
+    <div class="footer-content">
+        <p class="credit-line">CREATED BY SUJITH &copy; 2026</p>
+        
+        <div class="social-box">
+            <a href="https://github.com/sujithx1" target="_blank" class="social-link github">
+                <span class="icon">💻</span> GITHUB
+            </a>
+            
+            <a href="https://linkedin.com/in/sujithc-dev" target="_blank" class="social-link linkedin">
+                <span class="icon">🔗</span> LINKEDIN
+            </a>
+            
+            <a href="https://sujithc.netlify.app/" target="_blank" class="social-link portfolio">
+                <span class="icon">🚀</span> PORTFOLIO
+            </a>
+        </div>
+        
+        <p class="final-tag">Keep Coding, Keep Creating!</p>
+    </div>
+</footer>
+
+</body>
+</html>

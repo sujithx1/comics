@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>404 - Future Content Locked</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Short+Stack&display=swap');
+
+        :root {
+            --bg: #fdf6e3;
+            --ink: #000;
+            --magic: #bd93f9;
+        }
+
+        body {
+            background-color: var(--bg);
+            background-image: radial-gradient(var(--ink) 0.5px, transparent 0.5px);
+            background-size: 10px 10px;
+            font-family: 'Short Stack', cursive;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        .comic-box {
+            background: white;
+            border: 5px solid var(--ink);
+            padding: 40px;
+            box-shadow: 15px 15px 0px var(--ink);
+            max-width: 600px;
+            transform: rotate(-1deg);
+        }
+
+        h1 {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 7rem;
+            margin: 0;
+            color: #ffb86c; /* Orange comic color */
+            -webkit-text-stroke: 2px var(--ink);
+        }
+
+        h2 {
+            font-family: 'Permanent Marker', cursive;
+            background: var(--ink);
+            color: white;
+            padding: 5px 15px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .status-terminal {
+            background: #282a36;
+            color: #f1fa8c;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            text-align: left;
+            border-radius: 5px;
+            border: 2px solid var(--ink);
+            margin: 20px 0;
+        }
+
+        .loading-bar {
+            width: 100%;
+            height: 20px;
+            border: 2px solid var(--ink);
+            background: #eee;
+            margin-top: 10px;
+            position: relative;
+        }
+
+        .progress {
+            width: 40%;
+            height: 100%;
+            background: #50fa7b;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .btn-home {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: var(--magic);
+            border: 3px solid var(--ink);
+            color: #000;
+            text-decoration: none;
+            font-family: 'Permanent Marker', cursive;
+            box-shadow: 5px 5px 0px var(--ink);
+        }
+
+        .btn-home:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0px var(--ink); }
+
+        footer { margin-top: 50px; font-family: 'Permanent Marker'; }
+    </style>
+</head>
+<body>
+
+    <div class="comic-box">
+        <h1>404</h1>
+        <h2>TOPIC_NOT_YET_DRAWN</h2>
+        
+        <p style="font-size: 1.2rem;">You've reached a <strong>Future Chapter</strong>! Sujith is currently drawing these commands and coding the panels.</p>
+        
+        <div class="status-terminal">
+            <div>$ git status</div>
+            <div style="color: #ff79c6;">On branch 'future-ideas'</div>
+            <div>Changes not yet committed:</div>
+            <div style="color: #8be9fd;">&nbsp;&nbsp;&nbsp;modified: docker-comics.html</div>
+            <div style="color: #8be9fd;">&nbsp;&nbsp;&nbsp;modified: linux-shell.html</div>
+            <div class="loading-bar"><div class="progress"></div></div>
+            <div style="font-size: 0.7rem; margin-top: 5px;">DEVELOPMENT IN PROGRESS... 40%</div>
+        </div>
+
+        <a href="index.html" class="btn-home">GO BACK TO VAULT</a>
+    </div>
+
+    <footer>
+        <p>CREATED BY Sujith &copy; 2026 | <a href="https://github.com/sujithx1" style="color: #000;">GITHUB</a></p>
+    </footer>
+
+</body>
+</html>
