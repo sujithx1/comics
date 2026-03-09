@@ -11,15 +11,15 @@ Just **visual explanations**.
 ## 🌐 Read the Comics
 
 <p>
-<a href="https://YOUR_USERNAME.github.io/comics/git">
+<a href="https://sujithx1.github.io/comics/git">
 <img src="https://img.shields.io/badge/Git%20Comics-Read-blue?style=for-the-badge">
 </a>
 
-<a href="https://YOUR_USERNAME.github.io/comics/docker">
+<a href="https://sujithx1.github.io/comics/docker">
 <img src="https://img.shields.io/badge/Docker-Coming%20Soon-lightgrey?style=for-the-badge">
 </a>
 
-<a href="https://YOUR_USERNAME.github.io/comics/linux">
+<a href="https://sujithx1.github.io/comics/linux">
 <img src="https://img.shields.io/badge/Linux-Coming%20Soon-lightgrey?style=for-the-badge">
 </a>
 </p>
