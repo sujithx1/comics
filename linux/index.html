@@ -3,257 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Linux Survival Guide | Tech Chronicles</title>
+    <title>The Tech Chronicles: Omnibus</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Fira+Code:wght@400;700&family=Permanent+Marker&display=swap');
-
-        :root {
-            --bg: #1a1a1a;
-            --paper: #fdf6e3;
-            --terminal-green: #50fa7b;
-            --linux-yellow: #f8d000;
-            --ink: #000;
-            --accent: #ff003c;
-        }
-
-        body {
-            background-color: var(--bg);
-            background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 0px);
-            background-size: 20px 20px;
-            font-family: 'Fira Code', monospace;
-            color: white;
-            margin: 0;
-            padding: 20px;
-        }
-
-        /* --- Comic Header --- */
-        .page-header {
-            text-align: center;
-            padding: 40px 0;
-            background: var(--linux-yellow);
-            border: 5px solid var(--ink);
-            box-shadow: 10px 10px 0px var(--accent);
-            margin-bottom: 50px;
-            transform: rotate(-1deg);
-        }
-
-        .page-header h1 {
-            font-family: 'Bangers', cursive;
-            color: var(--ink);
-            font-size: 4rem;
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-top: 10px;
-            background: var(--ink);
-            color: white;
-            padding: 5px 15px;
-            text-decoration: none;
-            font-family: 'Permanent Marker';
-        }
-
-        /* --- The Command Grid --- */
-        .command-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .panel {
-            background: var(--paper);
-            border: 4px solid var(--ink);
-            padding: 0;
-            position: relative;
-            box-shadow: 8px 8px 0px var(--ink);
-            transition: 0.3s;
-        }
-
-        .panel:hover {
-            transform: translateY(-5px);
-            box-shadow: 12px 12px 0px var(--terminal-green);
-        }
-
-        .panel-header {
-            background: var(--ink);
-            color: white;
-            padding: 10px;
-            font-family: 'Bangers';
-            font-size: 1.5rem;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .panel-content {
-            padding: 20px;
-            color: var(--ink);
-        }
-
-        .cmd-group {
-            margin-bottom: 15px;
-        }
-
-        .cmd-row {
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 1px dashed #ccc;
-            padding: 5px 0;
-        }
-
-        code {
-            background: #e0e0e0;
-            padding: 2px 6px;
-            font-weight: bold;
-            color: var(--accent);
-        }
-
-        .description {
-            font-size: 0.9rem;
-            font-family: 'Courier New', Courier, monospace;
-        }
-
-        /* --- Footer Badge --- */
-        .danger-zone {
-            grid-column: 1 / -1;
-            background: #ff79c6;
-            color: var(--ink);
-            border: 4px solid var(--ink);
-            padding: 20px;
-            text-align: center;
-            font-family: 'Permanent Marker';
-            font-size: 1.2rem;
-            margin-top: 20px;
-        }
-
-        @media (max-width: 600px) {
-            .page-header h1 { font-size: 2.5rem; }
-        }
+        /* All your existing CSS stays here */
+        @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Permanent+Marker&family=Short+Stack&family=Fira+Code:wght@400;700&display=swap');
+        :root { --ink: #1a1a1a; --paper: #ffffff; --danger: #ff003c; --wizard-purple: #6c5ce7; --junior-blue: #0984e3; --gold: #fdcb6e; }
+        body { background-color: #2d3436; background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 0); background-size: 20px 20px; font-family: 'Short Stack', cursive; margin: 0; color: var(--ink); }
+        .page-wrapper { max-width: 900px; margin: 0 auto; background: var(--paper); border-left: 10px solid var(--ink); border-right: 10px solid var(--ink); padding: 40px; box-shadow: 0 0 50px rgba(0,0,0,0.5); }
+        header { text-align: center; border-bottom: 5px double var(--ink); padding-bottom: 40px; margin-bottom: 60px; }
+        .logo { font-family: 'Bangers'; font-size: 5rem; line-height: 0.8; transform: rotate(-2deg); text-shadow: 5px 5px 0 var(--danger); margin: 0; }
+        .chapter-title { font-family: 'Permanent Marker'; background: var(--ink); color: #fff; display: inline-block; padding: 10px 30px; margin-top: 20px; transform: skew(-10deg); }
+        .comic-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+        .panel { border: 4px solid var(--ink); min-height: 300px; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; background-color: #fff; box-shadow: 5px 5px 0 var(--ink); }
+        .bubble { background: #fff; border: 2px solid var(--ink); border-radius: 20px; padding: 10px 15px; margin: 10px; font-size: 0.9rem; position: relative; z-index: 2; }
+        .bubble.junior { border-color: var(--junior-blue); align-self: flex-start; }
+        .bubble.wizard { border-color: var(--wizard-purple); align-self: flex-end; text-align: right; }
+        .narrator { background: var(--gold); padding: 5px 15px; font-family: 'Permanent Marker'; border: 2px solid var(--ink); font-size: 0.8rem; width: fit-content; margin: -5px 0 0 -5px; }
+        .art { font-size: 5rem; text-align: center; flex-grow: 1; display: flex; align-items: center; justify-content: center; }
+        .onomatopoeia { font-family: 'Bangers'; color: var(--danger); font-size: 2.5rem; position: absolute; bottom: 10px; right: 10px; transform: rotate(-10deg); }
+        .cheat-sheet { background: #fdf6e3; border: 3px dashed var(--ink); padding: 20px; margin: 20px 0 60px 0; font-family: 'Fira Code', monospace; }
+        .cmd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        code { color: var(--danger); font-weight: bold; }
+        footer { text-align: center; padding: 60px 0; border-top: 5px dashed var(--ink); font-family: 'Bangers'; font-size: 2rem; }
     </style>
 </head>
 <body>
 
-    <header class="page-header">
-        <h1>LINUX COMMAND VAULT</h1>
-        <p style="color: black; font-weight: bold;">[ SESSION: ROOT@TECH_CHRONICLES ]</p>
-        <a href="#" class="back-link">← BACK TO ISSUES</a>
+<div class="page-wrapper">
+    <header>
+        <p style="font-family: 'Permanent Marker'; color: var(--danger);">TECH CHRONICLES: DYNAMIC EDITION</p>
+        <h1 class="logo">TERMINAL<br>FURY</h1>
     </header>
 
-    <div class="command-container">
-        
-        <div class="panel">
-            <div class="panel-header">
-                <span>01. NAVIGATION</span>
-                <span>📂</span>
-            </div>
-            <div class="panel-content">
-                <div class="cmd-row">
-                    <code>pwd</code>
-                    <span class="description">Where am I?</span>
-                </div>
-                <div class="cmd-row">
-                    <code>ls -la</code>
-                    <span class="description">See hidden files</span>
-                </div>
-                <div class="cmd-row">
-                    <code>cd ..</code>
-                    <span class="description">Go up one level</span>
-                </div>
-                <div class="cmd-row">
-                    <code>cd -</code>
-                    <span class="description">Jump to last folder</span>
-                </div>
-            </div>
-        </div>
+    <div id="comic-container"></div>
 
-        <div class="panel">
-            <div class="panel-header">
-                <span>02. FILE OPS</span>
-                <span>📄</span>
-            </div>
-            <div class="panel-content">
-                <div class="cmd-row">
-                    <code>touch [file]</code>
-                    <span class="description">Create empty file</span>
-                </div>
-                <div class="cmd-row">
-                    <code>mkdir -p</code>
-                    <span class="description">Make nested folders</span>
-                </div>
-                <div class="cmd-row">
-                    <code>cp -r</code>
-                    <span class="description">Copy folder contents</span>
-                </div>
-                <div class="cmd-row">
-                    <code>mv</code>
-                    <span class="description">Move or rename</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="panel">
-            <div class="panel-header">
-                <span>03. SUPER SIGHT</span>
-                <span>🔍</span>
-            </div>
-            <div class="panel-content">
-                <div class="cmd-row">
-                    <code>grep "text"</code>
-                    <span class="description">Find text in files</span>
-                </div>
-                <div class="cmd-row">
-                    <code>tail -f</code>
-                    <span class="description">Watch logs live</span>
-                </div>
-                <div class="cmd-row">
-                    <code>cat</code>
-                    <span class="description">Read file content</span>
-                </div>
-                <div class="cmd-row">
-                    <code>find . -name</code>
-                    <span class="description">Locate files</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="panel">
-            <div class="panel-header">
-                <span>04. SYSTEM POWER</span>
-                <span>⚡</span>
-            </div>
-            <div class="panel-content">
-                <div class="cmd-row">
-                    <code>htop</code>
-                    <span class="description">Monitor resources</span>
-                </div>
-                <div class="cmd-row">
-                    <code>chmod +x</code>
-                    <span class="description">Make script runnable</span>
-                </div>
-                <div class="cmd-row">
-                    <code>ps aux</code>
-                    <span class="description">List all processes</span>
-                </div>
-                <div class="cmd-row">
-                    <code>alias</code>
-                    <span class="description">Make custom shortcuts</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="danger-zone">
-            ⚠️ WARNING: <code>rm -rf /</code> WILL DESTROY YOUR ENTIRE UNIVERSE. USE RESPONSIBLY!
-        </div>
-
+    <div class="panel" style="background: var(--danger); color: white; text-align: center; padding: 40px; margin-bottom: 40px;">
+        <h2 style="font-family: 'Bangers'; font-size: 3rem;">⚠️ THE FORBIDDEN CURSE ⚠️</h2>
+        <code>rm -rf /</code>
+        <div class="art">💀🔥💀</div>
     </div>
 
-    <footer style="text-align: center; margin-top: 50px; opacity: 0.5;">
-        <p>TERMINAL FURY // TECH CHRONICLES ISSUE #03</p>
-    </footer>
+    <footer>THE END... FOR NOW</footer>
+</div>
+
+<script>
+    // 1. YOUR DATABASE: Add new chapters here!
+    const comicData = [
+        {
+            chapter: "CHAPTER 1: THE LOST PATH",
+            color: "#0984e3",
+            panels: [
+                { type: "junior", text: "I'm lost in the system! Where am I?", art: "🛰️", noise: "PING!", bg: "#e3f2fd", note: "LOST IN THE ROOT..." },
+                { type: "wizard", text: "Type <code>pwd</code> to find your soul!", art: "🧙‍♂️", noise: "SHAZAM!", bg: "#e3f2fd" }
+            ],
+            commands: [
+                { cmd: "pwd", desc: "Print Working Directory" },
+                { cmd: "ls -R", desc: "Recursive list" },
+                { cmd: "cd ~", desc: "Teleport Home" }
+            ]
+        },
+        {
+            chapter: "CHAPTER 2: MATTER BENDING",
+            color: "#e67e22",
+            panels: [
+                { type: "junior", text: "I need to build a fortress!", art: "🏗️", noise: "BUILD!", bg: "#fff3e0" },
+                { type: "wizard", text: "<code>mkdir</code> for walls, <code>mv</code> for loot!", art: "💎", noise: "CLANK!", bg: "#fff3e0" }
+            ],
+            commands: [
+                { cmd: "mkdir -p", desc: "Nested paths" },
+                { cmd: "cp -r", desc: "Clone realms" }
+            ]
+        }
+        ,
+        // Add these blocks inside your comicData = [ ... ] array
+
+{
+    chapter: "CHAPTER 4: THE WEB WEAVER",
+    color: "#00cec9", // Teal for Networking
+    panels: [
+        { 
+            type: "junior", 
+            text: "Is the server alive? Or am I shouting into the void?", 
+            art: "🌐", 
+            noise: "HELLO?!", 
+            bg: "#e0ffff", 
+            note: "LOST IN SPACE..." 
+        },
+        { 
+            type: "wizard", 
+            text: "Ping the spirits with <code>ping</code> and <code>curl</code> the secrets of the URL!", 
+            art: "📡", 
+            noise: "PONG!", 
+            bg: "#e0ffff" 
+        }
+    ],
+    commands: [
+        { cmd: "ping [host]", desc: "Check if a heart is beating" },
+        { cmd: "curl -I", desc: "Inspect web headers" },
+        { cmd: "ifconfig", desc: "Reveal your network identity" },
+        { cmd: "ssh [user]@", desc: "Project your soul to a remote server" }
+    ]
+},
+{
+    chapter: "CHAPTER 5: THE GRAND CLEANUP",
+    color: "#636e72", // Steel Gray for Housekeeping
+    panels: [
+        { 
+            type: "junior", 
+            text: "My disk is full! My logs are a mountain! Help!", 
+            art: "🧹", 
+            noise: "CLUTTER!", 
+            bg: "#f1f2f6" 
+        },
+        { 
+            type: "wizard", 
+            text: "Use <code>df</code> to find the bloat and <code>find</code> to hunt the ancient files!", 
+            art: "🕵️‍♂️", 
+            noise: "FOUND IT!", 
+            bg: "#f1f2f6" 
+        }
+    ],
+    commands: [
+        { cmd: "df -h", desc: "Check disk space (Human readable)" },
+        { cmd: "du -sh *", desc: "Size of current items" },
+        { cmd: "find . -size +100M", desc: "Hunt for giant files" },
+        { cmd: "grep -r", desc: "Search for text inside all files" }
+    ]
+}
+        // FUTURE YOU: Just add Issue #3 (Git) right here!
+    ];
+
+    // 2. THE ENGINE: This builds the HTML automatically
+    const container = document.getElementById('comic-container');
+
+    comicData.forEach(data => {
+        let section = document.createElement('section');
+        
+        // Build the Panels
+        let panelsHTML = data.panels.map(p => `
+            <div class="panel" style="background-color: ${p.bg}">
+                ${p.note ? `<div class="narrator">${p.note}</div>` : ''}
+                <div class="bubble ${p.type}">${p.text}</div>
+                <div class="art">${p.art}</div>
+                <div class="onomatopoeia">${p.noise}</div>
+            </div>
+        `).join('');
+
+        // Build the Cheat Sheet
+        let commandsHTML = data.commands.map(c => `
+            <div><code>${c.cmd}</code> : ${c.desc}</div>
+        `).join('');
+
+        section.innerHTML = `
+            <div class="chapter-title" style="background: ${data.color}">${data.chapter}</div>
+            <div class="comic-row">${panelsHTML}</div>
+            <div class="cheat-sheet">
+                <h3>📜 COMMAND SCROLLS</h3>
+                <div class="cmd-grid">${commandsHTML}</div>
+            </div>
+        `;
+        container.appendChild(section);
+    });
+</script>
 
 </body>
 </html>
