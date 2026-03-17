@@ -2,129 +2,257 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>404 - Future Content Locked</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Survival Guide | Tech Chronicles</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Short+Stack&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Fira+Code:wght@400;700&family=Permanent+Marker&display=swap');
 
         :root {
-            --bg: #fdf6e3;
+            --bg: #1a1a1a;
+            --paper: #fdf6e3;
+            --terminal-green: #50fa7b;
+            --linux-yellow: #f8d000;
             --ink: #000;
-            --magic: #bd93f9;
+            --accent: #ff003c;
         }
 
         body {
             background-color: var(--bg);
-            background-image: radial-gradient(var(--ink) 0.5px, transparent 0.5px);
-            background-size: 10px 10px;
-            font-family: 'Short Stack', cursive;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
+            background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 0px);
+            background-size: 20px 20px;
+            font-family: 'Fira Code', monospace;
+            color: white;
             margin: 0;
-            text-align: center;
+            padding: 20px;
         }
 
-        .comic-box {
-            background: white;
+        /* --- Comic Header --- */
+        .page-header {
+            text-align: center;
+            padding: 40px 0;
+            background: var(--linux-yellow);
             border: 5px solid var(--ink);
-            padding: 40px;
-            box-shadow: 15px 15px 0px var(--ink);
-            max-width: 600px;
+            box-shadow: 10px 10px 0px var(--accent);
+            margin-bottom: 50px;
             transform: rotate(-1deg);
         }
 
-        h1 {
-            font-family: 'Permanent Marker', cursive;
-            font-size: 7rem;
+        .page-header h1 {
+            font-family: 'Bangers', cursive;
+            color: var(--ink);
+            font-size: 4rem;
             margin: 0;
-            color: #ffb86c; /* Orange comic color */
-            -webkit-text-stroke: 2px var(--ink);
+            text-transform: uppercase;
+            letter-spacing: 3px;
         }
 
-        h2 {
-            font-family: 'Permanent Marker', cursive;
+        .back-link {
+            display: inline-block;
+            margin-top: 10px;
             background: var(--ink);
             color: white;
             padding: 5px 15px;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
-
-        .status-terminal {
-            background: #282a36;
-            color: #f1fa8c;
-            padding: 20px;
-            font-family: 'Courier New', monospace;
-            text-align: left;
-            border-radius: 5px;
-            border: 2px solid var(--ink);
-            margin: 20px 0;
-        }
-
-        .loading-bar {
-            width: 100%;
-            height: 20px;
-            border: 2px solid var(--ink);
-            background: #eee;
-            margin-top: 10px;
-            position: relative;
-        }
-
-        .progress {
-            width: 40%;
-            height: 100%;
-            background: #50fa7b;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
-        }
-
-        .btn-home {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
-            background: var(--magic);
-            border: 3px solid var(--ink);
-            color: #000;
             text-decoration: none;
-            font-family: 'Permanent Marker', cursive;
-            box-shadow: 5px 5px 0px var(--ink);
+            font-family: 'Permanent Marker';
         }
 
-        .btn-home:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0px var(--ink); }
+        /* --- The Command Grid --- */
+        .command-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
 
-        footer { margin-top: 50px; font-family: 'Permanent Marker'; }
+        .panel {
+            background: var(--paper);
+            border: 4px solid var(--ink);
+            padding: 0;
+            position: relative;
+            box-shadow: 8px 8px 0px var(--ink);
+            transition: 0.3s;
+        }
+
+        .panel:hover {
+            transform: translateY(-5px);
+            box-shadow: 12px 12px 0px var(--terminal-green);
+        }
+
+        .panel-header {
+            background: var(--ink);
+            color: white;
+            padding: 10px;
+            font-family: 'Bangers';
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .panel-content {
+            padding: 20px;
+            color: var(--ink);
+        }
+
+        .cmd-group {
+            margin-bottom: 15px;
+        }
+
+        .cmd-row {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed #ccc;
+            padding: 5px 0;
+        }
+
+        code {
+            background: #e0e0e0;
+            padding: 2px 6px;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .description {
+            font-size: 0.9rem;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        /* --- Footer Badge --- */
+        .danger-zone {
+            grid-column: 1 / -1;
+            background: #ff79c6;
+            color: var(--ink);
+            border: 4px solid var(--ink);
+            padding: 20px;
+            text-align: center;
+            font-family: 'Permanent Marker';
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .page-header h1 { font-size: 2.5rem; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="comic-box">
-        <h1>404</h1>
-        <h2>TOPIC_NOT_YET_DRAWN</h2>
+    <header class="page-header">
+        <h1>LINUX COMMAND VAULT</h1>
+        <p style="color: black; font-weight: bold;">[ SESSION: ROOT@TECH_CHRONICLES ]</p>
+        <a href="#" class="back-link">← BACK TO ISSUES</a>
+    </header>
+
+    <div class="command-container">
         
-        <p style="font-size: 1.2rem;">You've reached a <strong>Future Chapter</strong>! Sujith is currently drawing these commands and coding the panels.</p>
-        
-        <div class="status-terminal">
-            <div>$ git status</div>
-            <div style="color: #ff79c6;">On branch 'future-ideas'</div>
-            <div>Changes not yet committed:</div>
-            <div style="color: #8be9fd;">&nbsp;&nbsp;&nbsp;modified: docker-comics.html</div>
-            <div style="color: #8be9fd;">&nbsp;&nbsp;&nbsp;modified: linux-shell.html</div>
-            <div class="loading-bar"><div class="progress"></div></div>
-            <div style="font-size: 0.7rem; margin-top: 5px;">DEVELOPMENT IN PROGRESS... 40%</div>
+        <div class="panel">
+            <div class="panel-header">
+                <span>01. NAVIGATION</span>
+                <span>📂</span>
+            </div>
+            <div class="panel-content">
+                <div class="cmd-row">
+                    <code>pwd</code>
+                    <span class="description">Where am I?</span>
+                </div>
+                <div class="cmd-row">
+                    <code>ls -la</code>
+                    <span class="description">See hidden files</span>
+                </div>
+                <div class="cmd-row">
+                    <code>cd ..</code>
+                    <span class="description">Go up one level</span>
+                </div>
+                <div class="cmd-row">
+                    <code>cd -</code>
+                    <span class="description">Jump to last folder</span>
+                </div>
+            </div>
         </div>
 
-        <a href="index.html" class="btn-home">GO BACK TO VAULT</a>
+        <div class="panel">
+            <div class="panel-header">
+                <span>02. FILE OPS</span>
+                <span>📄</span>
+            </div>
+            <div class="panel-content">
+                <div class="cmd-row">
+                    <code>touch [file]</code>
+                    <span class="description">Create empty file</span>
+                </div>
+                <div class="cmd-row">
+                    <code>mkdir -p</code>
+                    <span class="description">Make nested folders</span>
+                </div>
+                <div class="cmd-row">
+                    <code>cp -r</code>
+                    <span class="description">Copy folder contents</span>
+                </div>
+                <div class="cmd-row">
+                    <code>mv</code>
+                    <span class="description">Move or rename</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <span>03. SUPER SIGHT</span>
+                <span>🔍</span>
+            </div>
+            <div class="panel-content">
+                <div class="cmd-row">
+                    <code>grep "text"</code>
+                    <span class="description">Find text in files</span>
+                </div>
+                <div class="cmd-row">
+                    <code>tail -f</code>
+                    <span class="description">Watch logs live</span>
+                </div>
+                <div class="cmd-row">
+                    <code>cat</code>
+                    <span class="description">Read file content</span>
+                </div>
+                <div class="cmd-row">
+                    <code>find . -name</code>
+                    <span class="description">Locate files</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <span>04. SYSTEM POWER</span>
+                <span>⚡</span>
+            </div>
+            <div class="panel-content">
+                <div class="cmd-row">
+                    <code>htop</code>
+                    <span class="description">Monitor resources</span>
+                </div>
+                <div class="cmd-row">
+                    <code>chmod +x</code>
+                    <span class="description">Make script runnable</span>
+                </div>
+                <div class="cmd-row">
+                    <code>ps aux</code>
+                    <span class="description">List all processes</span>
+                </div>
+                <div class="cmd-row">
+                    <code>alias</code>
+                    <span class="description">Make custom shortcuts</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="danger-zone">
+            ⚠️ WARNING: <code>rm -rf /</code> WILL DESTROY YOUR ENTIRE UNIVERSE. USE RESPONSIBLY!
+        </div>
+
     </div>
 
-    <footer>
-        <p>CREATED BY Sujith &copy; 2026 | <a href="https://github.com/sujithx1" style="color: #000;">GITHUB</a></p>
+    <footer style="text-align: center; margin-top: 50px; opacity: 0.5;">
+        <p>TERMINAL FURY // TECH CHRONICLES ISSUE #03</p>
     </footer>
 
 </body>
